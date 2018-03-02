@@ -15,14 +15,15 @@ names = soup.find(class_="content clearfix")
 print("Retreived from \"http://www.dragoncon.org/?q=past_guests\" ")
 print("Website sorts past guest list by [first name,last name,last appearance]")
 
-
-menu = int(input("Enter Number: (1: Search by Guest, 2: Search by Year) " ))
+menu = int(input("Enter Number: \n1: Search by Guest\n2: Search by Year\n3 Enter guest with Last Name\n " ))
 
 #retrieve from website, and put names into list
+guestCount = 0
 guest = list()
 for b in soup.find_all('b'):
     name = b.text + str(b.next_sibling)
     guest.append(name)
+    guestCount += 1
 
 if(menu == 1):
     #look for a guest
@@ -49,8 +50,13 @@ elif(menu == 2):
                 
         print("Total Guests: ", guestCount)
 
-#TODO
-#ask user if they want only a certain letter (only A last names)
-#search guest online
+#TODO: ask user if they want only a certain letter (only A last names) 
+##print(guest[3555].split()[1]+" "+guest[3555].split()[2])
+##print(guest[3555])
+##print(guest[3555].split()[1][0])
+    
+print("Total Guests: ", guestCount)
+
+#TODO: search guest online
         
 print("Done")
