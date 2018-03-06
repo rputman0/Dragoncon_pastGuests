@@ -15,7 +15,7 @@ names = soup.find(class_="content clearfix")
 print("Retreived from \"http://www.dragoncon.org/?q=past_guests\" ")
 print("Website sorts past guest list by [first name,last name,last appearance]")
 
-menu = int(input("Enter Number: \n1: Search by Guest\n2: Search by Year\n3 Enter guest with Last Name\n " ))
+menu = int(input("Enter Number: \n1: Search by Guest\n2: Search by Year " ))
 
 #retrieve from website, and put names into list
 guestCount = 0
