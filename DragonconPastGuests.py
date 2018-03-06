@@ -1,4 +1,4 @@
-#DragonconPastGuests.py - let user look at past guest data
+#DragonconPastGuests.py - let a user look at past guest data
 
 import requests,os
 from bs4 import BeautifulSoup
@@ -9,8 +9,8 @@ page.raise_for_status() #if == none, all is well
 soup = BeautifulSoup(page.content,'html.parser')
 names = soup.find(class_="content clearfix")
 
-#TODO: ignore warning
-# Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+#warning: Some characters could not be decoded, and were replaced with REPLACEMENT CHARACTER.
+#warning does nothing, no need to remove 
 
 print("Retreived from \"http://www.dragoncon.org/?q=past_guests\" ")
 print("Website sorts past guest list by [first name,last name,last appearance]")
@@ -25,8 +25,8 @@ for b in soup.find_all('b'):
     guest.append(name)
     guestCount += 1
 
+#look for a guest name
 if(menu == 1):
-    #look for a guest
     search = True
     while(search):
         guestName = input("Enter the guest you are looking for: ")
@@ -37,9 +37,9 @@ if(menu == 1):
         search = input("look for another guest? ('y','n')")
         if(search == 'n'):
             search = False
-        
+
+#look for guests in a certain year
 elif(menu == 2):
-    #look for guests in a certain year
     guestCount = 0
     year = input("Enter the year you are looking for: ('n' to skip) ")
     if(year != 'n'):
@@ -49,14 +49,7 @@ elif(menu == 2):
                 guestCount += 1
                 
         print("Total Guests: ", guestCount)
-
-#TODO: ask user if they want only a certain letter (only A last names) 
-##print(guest[3555].split()[1]+" "+guest[3555].split()[2])
-##print(guest[3555])
-##print(guest[3555].split()[1][0])
     
 print("Total Guests: ", guestCount)
-
-#TODO: search guest online
         
 print("Done")
